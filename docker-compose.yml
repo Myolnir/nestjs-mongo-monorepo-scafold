@@ -1,0 +1,30 @@
+version: '3.5'
+services:
+  fizz:
+    build:
+      context: .
+      dockerfile: apps/fizz/Dockerfile
+    ports:
+      - 3001:3001
+    container_name: fizz
+    command: develop fizz
+    volumes:
+      - ./apps/fizz:/opt/api/apps/fizz
+      - ./libs:/opt/api/libs
+    env_file: apps/fizz/.env
+    environment:
+      - PORT=3001
+      - NODE_ENV=develop
+    depends_on:
+      - mongo
+    links:
+      - mongo
+
+  mongo:
+    image: mongo
+    container_name: mongo
+    restart: always
+    volumes:
+      - ./data/db/mongo:/data/db
+    ports:
+      - 27017:27017

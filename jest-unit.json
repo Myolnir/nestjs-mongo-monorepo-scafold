@@ -1,0 +1,40 @@
+{
+  "moduleFileExtensions": ["ts", "tsx", "js", "json"],
+  "transform": {
+    "^.+\\.tsx?$": "ts-jest"
+  },
+  "rootDir": ".",
+  "coverageDirectory": "./coverage",
+  "testEnvironment": "node",
+  "testRegex": "apps/.*\\.spec.(ts|tsx|js)$",
+  "bail": true,
+  "verbose": true,
+  "collectCoverageFrom": [
+    "apps/**/*.{js,ts}",
+    "!apps/**/*.module.{js,ts}",
+    "!apps/**/*.dto.{js,ts}",
+    "!apps/**/app.*.{js,ts}",
+    "!apps/**/main.{js,ts}",
+    "!apps/**/specs/**/*.{js,ts}",
+    "!apps/**/database/**/*.{js,ts}",
+    "!<rootDir>/node_modules/"
+  ],
+  "moduleNameMapper": {
+    "@app/server/(.*)": "<rootDir>/libs/server/src/$1",
+    "@app/server": "<rootDir>/libs/server/src",
+    "@app/logger/(.*)": "<rootDir>/libs/logger/src/$1",
+    "@app/logger": "<rootDir>/libs/logger/src",
+    "@app/events/(.*)": "<rootDir>/libs/events/src/$1",
+    "@app/events": "<rootDir>/libs/events/src",
+    "@app/interceptors/(.*)": "<rootDir>/libs/interceptors/src/$1",
+    "@app/interceptors": "<rootDir>/libs/interceptors/src",
+    "@app/common-dtos/(.*)": "<rootDir>/libs/common-dtos/src/$1",
+    "@app/common-dtos": "<rootDir>/libs/common-dtos/src",
+    "@app/exceptions/(.*)": "<rootDir>/libs/exceptions/src/$1",
+    "@app/exceptions": "<rootDir>/libs/exceptions/src",
+    "@app/filters/(.*)": "<rootDir>/libs/filters/src/$1",
+    "@app/filters": "<rootDir>/libs/filters/src",
+    "@app/utils/(.*)": "<rootDir>/libs/utils/src/$1",
+    "@app/utils": "<rootDir>/libs/utils/src",
+  }
+}

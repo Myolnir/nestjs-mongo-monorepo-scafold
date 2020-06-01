@@ -1,0 +1,84 @@
+import { logger } from '@app/logger';
+
+describe('Logger', () => {
+  it('should show a log with level info', () => {
+    let output = '';
+    const originalStdoutWrite = process.stdout.write.bind(process.stdout);
+    // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+    // @ts-ignore
+    process.stdout.write = (chunk, encoding, callback) => {
+      if (typeof chunk === 'string') {
+        output += chunk;
+      }
+      return originalStdoutWrite(chunk, encoding, callback);
+    };
+
+    const message = 'message!!!!';
+    logger.info(message, { pepe: 'hola' });
+    const expected = { level: 30, msg: message };
+    process.stdout.write = originalStdoutWrite;
+    const { level, msg } = JSON.parse(output);
+    expect({ level, msg }).toEqual(expected);
+  });
+
+  it('should show a log with level warn', () => {
+    let output = '';
+    const originalStdoutWrite = process.stdout.write.bind(process.stdout);
+    // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+    // @ts-ignore
+    process.stdout.write = (chunk, encoding, callback) => {
+      if (typeof chunk === 'string') {
+        output += chunk;
+      }
+      return originalStdoutWrite(chunk, encoding, callback);
+    };
+
+    const message = 'message!!!!';
+    logger.warn(message);
+    const expected = { level: 40, msg: message };
+    process.stdout.write = originalStdoutWrite;
+    const { level, msg } = JSON.parse(output);
+    expect({ level, msg }).toEqual(expected);
+  });
+
+  it('should show a log with level error', () => {
+    let output = '';
+    const originalStdoutWrite = process.stdout.write.bind(process.stdout);
+    // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+    // @ts-ignore
+    process.stdout.write = (chunk, encoding, callback) => {
+      if (typeof chunk === 'string') {
+        output += chunk;
+      }
+      return originalStdoutWrite(chunk, encoding, callback);
+    };
+
+    const message = 'message!!!!';
+    const error = new Error('error!');
+    logger.error(message, error);
+    const expected = { level: 50, msg: message, error };
+    process.stdout.write = originalStdoutWrite;
+    const { level, msg } = JSON.parse(output);
+    expect({ level, msg, error }).toEqual(expected);
+  });
+
+  it('should show a log with level error', () => {
+    let output = '';
+    const originalStdoutWrite = process.stdout.write.bind(process.stdout);
+    // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+    // @ts-ignore
+    process.stdout.write = (chunk, encoding, callback) => {
+      if (typeof chunk === 'string') {
+        output += chunk;
+      }
+      return originalStdoutWrite(chunk, encoding, callback);
+    };
+
+    const message = 'message!!!!';
+    logger.debug(message);
+    const expected = { level: 20, msg: message };
+    process.stdout.write = originalStdoutWrite;
+    const { level, msg } = JSON.parse(output);
+    expect({ level, msg }).toEqual(expected);
+  });
+});

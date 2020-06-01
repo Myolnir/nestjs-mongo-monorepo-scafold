@@ -1,0 +1,95 @@
+{
+  "collection": "@nestjs/schematics",
+  "sourceRoot": "apps/fizz/src",
+  "monorepo": true,
+  "root": ".",
+  "compilerOptions": {
+    "webpack": false,
+    "tsConfigPath": "apps/fizz/tsconfig.app.json",
+    "deleteOutDir": false
+  },
+  "projects": {
+    "fizz": {
+      "type": "application",
+      "root": ".",
+      "entryFile": "main",
+      "sourceRoot": "apps/fizz/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/fizz/tsconfig.app.json",
+        "deleteOutDir": false
+      }
+    },
+    "server": {
+      "type": "library",
+      "root": "libs/server",
+      "entryFile": "index",
+      "sourceRoot": "libs/server/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/server/tsconfig.lib.json"
+      }
+    },
+    "logger": {
+      "type": "library",
+      "root": "libs/logger",
+      "entryFile": "index",
+      "sourceRoot": "libs/logger/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/logger/tsconfig.lib.json"
+      }
+    },
+    "events": {
+      "type": "library",
+      "root": "libs/events",
+      "entryFile": "index",
+      "sourceRoot": "libs/events/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/events/tsconfig.lib.json"
+      }
+    },
+    "interceptors": {
+      "type": "library",
+      "root": "libs/interceptors",
+      "entryFile": "index",
+      "sourceRoot": "libs/interceptors/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/interceptors/tsconfig.lib.json"
+      }
+    },
+    "common-dtos": {
+      "type": "library",
+      "root": "libs/common-dtos",
+      "entryFile": "index",
+      "sourceRoot": "libs/common-dtos/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/common-dtos/tsconfig.lib.json"
+      }
+    },
+    "exceptions": {
+      "type": "library",
+      "root": "libs/exceptions",
+      "entryFile": "index",
+      "sourceRoot": "libs/exceptions/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/exceptions/tsconfig.lib.json"
+      }
+    },
+    "filters": {
+      "type": "library",
+      "root": "libs/filters",
+      "entryFile": "index",
+      "sourceRoot": "libs/filters/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/filters/tsconfig.lib.json"
+      }
+    },
+    "utils": {
+      "type": "library",
+      "root": "libs/utils",
+      "entryFile": "index",
+      "sourceRoot": "libs/utils/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/utils/tsconfig.lib.json"
+      }
+    }
+  }
+}
